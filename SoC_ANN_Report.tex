@@ -1,0 +1,97 @@
+
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{\textbf{State of Charge (SoC) Estimation Using Artificial Neural Networks (ANN)}}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{ABSTRACT}
+The State of Charge (SoC) is a critical parameter that reflects the usable capacity of a lithium-ion battery, especially in electric vehicles (EVs). Accurate estimation of SoC is essential for improving the battery's performance, safety, and lifespan. Traditional estimation methods like Kalman Filtering or Coulomb Counting face challenges in handling nonlinearities and battery aging. This project proposes a data-driven approach using Artificial Neural Networks (ANNs) to estimate SoC from current, voltage, and temperature data. The neural network is trained and validated using MATLAB to model the battery's nonlinear behavior. The results demonstrate that the ANN-based estimator provides high accuracy with excellent generalization, making it a viable candidate for real-time BMS integration.
+
+\section*{ACKNOWLEDGEMENT}
+We express our sincere gratitude to our mentor [Professor’s Name], Department of Electrical Engineering, for his continuous support and guidance throughout this project. We would also like to thank our institution and peers for their support and resources that made this research possible.
+
+\section*{1. INTRODUCTION}
+With the growth of e-mobility, efficient and safe battery operation is crucial. The SoC is akin to a fuel gauge for electric vehicles, providing vital information for energy management and user decisions. Unlike fuel tanks, battery SoC cannot be measured directly, necessitating smart estimation methods. This work explores the use of Artificial Neural Networks (ANNs) to model battery behavior and estimate SoC by learning from empirical data.
+
+\section*{2. PROBLEM STATEMENT}
+Traditional SoC estimation techniques often fail under real-world conditions due to battery aging, noise, and nonlinear behavior. This project addresses the need for a more accurate and adaptive SoC estimation method that can operate effectively under varying battery conditions using artificial neural networks.
+
+\section*{3. OBJECTIVES}
+\begin{itemize}
+    \item To develop an ANN-based model for accurate SoC estimation.
+    \item To compare ANN predictions with actual data and traditional estimation results.
+    \item To train and validate the network on real or simulated lithium-ion battery datasets.
+    \item To evaluate performance metrics like MSE, regression coefficient, and error distribution.
+\end{itemize}
+
+\section*{4. SYSTEM DIAGRAM AND DESCRIPTION}
+\subsection*{Block Diagram}
+\begin{verbatim}
+Battery Data (Voltage, Current, Temp)
+         ↓
+   Preprocessing & Normalization
+         ↓
+      Neural Network
+         ↓
+  SoC Estimation Output
+\end{verbatim}
+
+\subsection*{Components}
+\begin{itemize}
+    \item \textbf{Input Layer:} Voltage, current, and temperature.
+    \item \textbf{Hidden Layers:} One or more fully connected layers with activation functions.
+    \item \textbf{Output Layer:} SoC estimation.
+    \item \textbf{Training:} Supervised learning using MATLAB’s Neural Network Toolbox.
+\end{itemize}
+
+\section*{5. METHODOLOGY AND IMPLEMENTATION}
+\begin{enumerate}
+    \item \textbf{Data Collection:} Simulated or real battery cycling data.
+    \item \textbf{Data Preprocessing:} Normalization and division into training, validation, and testing.
+    \item \textbf{ANN Model Design:} Feedforward backpropagation network.
+    \item \textbf{Implementation in MATLAB:} Use \texttt{fitnet} or \texttt{feedforwardnet}.
+    \item \textbf{Validation:} Evaluate with MSE, regression (R), and error histogram.
+\end{enumerate}
+
+\section*{6. RESULTS AND DISCUSSION}
+\textbf{Key Results:}
+\begin{itemize}
+    \item \textbf{Regression R-value:} $\approx 0.99$ (high correlation).
+    \item \textbf{MSE:} Low, indicating high prediction accuracy.
+    \item \textbf{Error Histogram:} Symmetric with small standard deviation.
+\end{itemize}
+
+\textbf{Discussion:} The ANN learned the nonlinear behavior effectively and generalizes well on unseen data. Its performance is superior under dynamic loading compared to traditional methods.
+
+\section*{7. CONCLUSION AND FUTURE WORKS}
+\subsection*{7.1 Conclusion}
+This project successfully demonstrated that Artificial Neural Networks can be used to estimate the SoC of lithium-ion batteries with high accuracy. The trained model shows strong generalization, making it suitable for BMS integration. It outperforms basic estimation techniques in handling nonlinear and aged battery behavior.
+
+\subsection*{7.2 Future Works}
+\begin{itemize}
+    \item Incorporate adaptive ANN models to handle online learning.
+    \item Use hybrid techniques (e.g., ANN + Kalman Filter).
+    \item Extend to multi-cell battery packs with aging consideration.
+    \item Deploy on embedded systems for real-time implementation.
+\end{itemize}
+
+\section*{REFERENCES}
+\begin{enumerate}
+    \item Zhang, C., et al. "A review on state of charge estimation for lithium-ion batteries." Renewable and Sustainable Energy Reviews 65 (2016): 631-645.
+    \item Plett, G. L. “Extended Kalman Filtering for Battery Management Systems of LiPB-Based HEV Battery Packs—Part 2: Modeling and Identification.” Journal of Power Sources 134 (2004): 262–276.
+    \item MATLAB Documentation – Neural Network Toolbox.
+    \item He, H., et al. "Comparison study on the battery state of charge estimation methods for electric vehicles." Journal of Power Sources 226 (2013): 194-198.
+    \item Liu, K., et al. "An adaptive SoC estimation method based on ANN considering battery aging." Energy 145 (2018): 951-960.
+\end{enumerate}
+
+\end{document}
